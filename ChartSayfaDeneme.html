@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        #periods{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="page1-tab" data-bs-toggle="tab" data-bs-target="#page1" type="button" role="tab" aria-controls="home" aria-selected="true">Page 1</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="page2-tab" data-bs-toggle="tab" data-bs-target="#page2" type="button" role="tab" aria-controls="page2" aria-selected="false">Page 2</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="page3-tab" data-bs-toggle="tab" data-bs-target="#page3" type="button" role="tab" aria-controls="page3" aria-selected="false">Page 3</button>
+                    </li>
+                </ul>
+                <div class="tab-content p-2" id="myTabContent">
+                    <div class="tab-pane fade show active row" id="page1" role="tabpanel" aria-labelledby="page1-tab">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <table class="table table-striped table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Şirket Adi</th>
+                                            <th scope="col">Toplam Çalışma Saati</th>
+                                            <th scope="col">Faturalandırılan Toplam Saati</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">Pisan</td>
+                                            <td>258</td>
+                                            <td>25</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">Karınca</td>
+                                            <td>200</td>
+                                            <td>52</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">Libart</td>
+                                            <td>200</td>
+                                            <td>41</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfooter>
+                                        <tr>
+                                            <td>Toplam</td>
+                                            <td>658</td>
+                                            <td>98</td>
+                                        </tr>
+                                    </tfooter>
+                                </table>
+                                <div>
+                                    <canvas id="FTS"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <canvas id="TCS"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="page2" role="tabpanel" aria-labelledby="page2-tab">
+                        page 2
+                    </div>
+                    <div class="tab-pane fade" id="page3" role="tabpanel" aria-labelledby="page3-tab">
+                        page 3
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <h5>Dönemler</h5>
+                <div class="form-check">
+                    <input id="2022/01" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">2022/01</label>
+                </div>
+                <div class="form-check">
+                    <input id="2022/02" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">2022/02</label>
+                  </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+    <script>
+        const ctx = document.getElementById('FTS').getContext('2d');
+        const FTSChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label:'degerler',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title:{
+                    display:true,
+                    text:"Faturalandırılan Toplam Saati"
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('TCS').getContext('2d');
+        const TCSChart = new Chart(ctx2, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label:[],
+                    data: [12, 50, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    xAxes: [{
+                        display:true,
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: 'Toplam Calışılan Saat'
+                }     
+            },
+        });
+    
+        document.body.addEventListener('change', function(e){
+            let target = e.target;
+            switch(target.id){
+                case "2022/01":
+                    FTSChart.data.labels=["Ocak", "Şubat", "Mart"];
+                    FTSChart.data.datasets[0].data = [50, 10, 50];
+                    TCSChart.data.labels=["Ocak", "Şubat", "Mart"];
+                    TCSChart.data.datasets[0].data = [50, 10, 50];
+                    break;
+                case "2022/02":
+                    FTSChart.data.labels=["Nisan", "Mayıs", "Haziran"];
+                    FTSChart.data.datasets[0].data = [10, 50, 42];
+                    TCSChart.data.labels=["Nisan", "Mayıs", "Haziran"];
+                    TCSChart.data.datasets[0].data = [57, 20, 41];
+                    break;
+            }
+            FTSChart.update();
+            TCSChart.update();
+        });
+    </script>
+</body>
+</html>
